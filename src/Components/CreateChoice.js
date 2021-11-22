@@ -20,7 +20,7 @@ function CreateChoice() {
           <td>
             <div>
               <Card
-                title={"Feedback"}
+                title={"Templates"}
                 text={"Select this tile to get pre-created feedback form."}
                 to={'/feedbackTemplate'}
               />
