@@ -4,14 +4,12 @@ function DropDownButton(props) {
   // console.log(props.list)
   return (
     <div>
-      
-      <button type="button" class="btn btn-outline-secondary" id="mybtn">{props.name}
-        <select class="form-select" aria-label="Default select example">
+      <button type="button" className="btn btn-outline-secondary" id="mybtn">
+        {props.name}
+        <select className="form-select" aria-label="Default select example" onChange={props.handleChange}>
           {props.list}
         </select>
-        
       </button>
-
     </div>
   );
 }
