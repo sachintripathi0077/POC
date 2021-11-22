@@ -2,6 +2,7 @@ import React from "react";
 import QuestionCard from "./QuestionCard";
 import { useState, useEffect } from "react";
 import DropDownButton from "./DropDownButton";
+import FormHeader from "./FormHeader";
 
 function BlankForm() {
   const [questionId, setQuestionId] = useState(0);
@@ -42,6 +43,7 @@ function BlankForm() {
 
   return (
     <>
+    <FormHeader/>
       <div className="container">
         {questionList.map((question, i) => (
           <QuestionCard
