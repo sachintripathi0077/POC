@@ -10,6 +10,7 @@ import BlankForm from "./Components/BlankForm";
 import FeedbackTemplate from "./Components/FeedbackTemplate";
 import PreviewScreen from "./Components/PreviewScreen";
 import store from "./Redux/store";
+import SuccessResponse from './Components/SuccessResponse'
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
           <Route exact path = 'createBlank' element={<BlankForm/>} />
           <Route exact path = 'feedbackTemplate' element={<FeedbackTemplate/>} />
           <Route exact path= '/preview' element={<PreviewScreen/>} />
+          <Route exact path = 'successResponse' element={<SuccessResponse/>}/>
+
+
           {/* <Route path="invoices" element={<Invoices />} /> */}
         </Routes>
       

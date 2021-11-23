@@ -1,40 +1,56 @@
-import React, { Component } from "react";
-import { BiImageAdd } from "react-icons/bi";
 
-export default class FormHeader extends Component {
-  state = {
-    profileImg: "",
-  };
-  imageHandler = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        this.setState({ profileImg: reader.result });
-        console.log(reader.result);
-      }
+import React, { Component } from "react";
+import { postFormHeader } from "../Redux/actions";
+import { connect } from "react-redux";
+
+class FormHeader extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      profileImg: "",
+      title: "",
     };
-    var url = URL.createObjectURL(e.target.files[0]);
-    console.log(url);
-    reader.readAsDataURL(e.target.files[0]);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
+
+  handleImage = (event) => {
+    var url = URL.createObjectURL(event.target.files[0]);
+    this.setState({
+      profileImg: url,
+    });
+    this.state.profileImg = url;
+    console.log(this.state.profileImg);
+    this.props.headerContent(this.state);
+  };
+
+  handleChange = (e) => {
+    this.setState({ title: e.target.value });
+    console.log(this.state.title);
+    this.props.headerContent(this.state);
   };
   render() {
-    const { profileImg } = this.state;
+    // const { profileImg } = this.state
     return (
       <div className="headerContainer">
         <div className="imageContainer">
           <div className="img-holder">
-            <img src={profileImg} alt="Add Image" id="img" className="img" />
+            <img
+              src={this.state.profileImg}
+              alt="Add Image"
+              id="img"
+              className="img"
+            />
           </div>
           <input
             type="file"
             accept="image/*"
             name="image-upload"
             id="input"
-            onChange={this.imageHandler}
+            onChange={this.handleImage}
           />
           <div className="label">
-            <label className="btn btn-primary" htmlFor="input">
-              <BiImageAdd />
+            <label className="btn btn-outline-primary" htmlFor="input">
               Choose Image
             </label>
           </div>
@@ -48,6 +64,8 @@ export default class FormHeader extends Component {
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-lg"
               placeholder="Form Title Here"
+              onChange={this.handleChange}
+              value={this.state.title}
             ></input>
           </div>
         </div>
@@ -55,3 +73,16 @@ export default class FormHeader extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    headerContent: (headerContent) => dispatch(postFormHeader(headerContent)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormHeader);

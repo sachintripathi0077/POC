@@ -264,7 +264,7 @@ button {
 
 .headerContainer {
   /* background-color: #61dafb; */
-  width: 70%;
+  width: 69%;
   margin-left: 16%;
   margin-right: 8%;
   height: 200px;
@@ -292,12 +292,12 @@ button {
   margin: 5px;
   background-color: rgb(249, 247, 247);
   height: 140px;
-  width: 800px;
+  width: 1100px;
   border-radius: 5px;
 }
 
 .input-group {
-  width: 700px;
+  width: 1000px;
   /* margin-top: 30px;
   margin-bottom: 20px; */
   height: 70px;
@@ -363,7 +363,7 @@ input {
 
 /* Form Style */
 .formtextbutton {
-  width: 80%;
+  width: 72%;
   border: 2px solid #aaa;
   border-radius: 4px;
   margin: 8px 0;
@@ -391,4 +391,29 @@ input {
   box-shadow: none;
   outline:none;
   border: none;
+}
+
+.previewbutton {
+  width: 12%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 6px;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 3s;
+}
+
+#previewsubmit {
+  position: absolute;
+  width: 12%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 8px -100px;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 3s;
+}
+
+.successScreen{
+  margin-top: 300px;
 }

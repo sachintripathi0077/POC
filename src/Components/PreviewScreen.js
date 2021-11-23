@@ -4,9 +4,14 @@ import PreviewQuestion from "./PreviewQuestion";
 import store from "../Redux/store";
 import { connect } from "react-redux";
 import axios from "axios";
+import PreviewHeader from "./PreviewHeader";
+import {Link} from 'react-router-dom'
+
+import { useNavigate } from 'react-router-dom'
 
 function PreviewScreen({ questionList }) {
-  const [state, setstate] = useState([{ qid: 1, response: "" }]);
+ const [state, setstate] = useState([{ qid: 1, response: "" }]);
+ const navigate = useNavigate();
 
   const setPreviewState = (qState, id) => {
     let newState = state.filter((question) => question.qid != id);
@@ -24,27 +29,40 @@ function PreviewScreen({ questionList }) {
       "http://localhost:3080/responses",
       state
     );
-    setstate([]);
+    navigate(`/successResponse`);
+
   }
-
+ 
   return (
-    <div>
-      <form onSubmit={handleOnClick}>
-        {questionList.map((q, i) => {
-          return (
-            <PreviewQuestion
-              type={q.type}
-              label={q.label}
-              options={q.options}
-              setPreviewState={setPreviewState}
-              id={q.id}
-            />
-          );
-        })}
+    <>
+      <div>
+        <PreviewHeader />
+      </div>
 
-        <button type="submit">SUBMIT</button>
-      </form>
-    </div>
+      <div>
+        <form onSubmit={handleOnClick}>
+          {questionList.map((q, i) => {
+            return (
+              <PreviewQuestion
+                type={q.type}
+                label={q.label}
+                options={q.options}
+                setPreviewState={setPreviewState}
+                id={q.id}
+              />
+            );
+          })}
+
+          <button type="submit" className="btn btn-primary" id='previewsubmit' >
+            {/* <Link to="/successResponse">SUBMIT</Link> */}
+            SUBMIT
+          </button>
+    )
+
+
+        </form>
+      </div>
+    </>
   );
 }
 const mapStateToProps = (state) => {

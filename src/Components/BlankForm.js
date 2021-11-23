@@ -69,7 +69,7 @@ function BlankForm({ postQuestionsList, state }) {
             updatedData={updatedData}
           ></QuestionCard>
         ))}
-        <button onClick={onPreviewClick}>Preview</button>
+        
       </div>
 
       {/* ---------------------------------------Toolbar Start ----------------------------------*/}
@@ -98,6 +98,7 @@ function BlankForm({ postQuestionsList, state }) {
 
           Add Tile
         </button>
+        <button onClick={onPreviewClick} className='previewbutton'>Preview</button>
       </div>
       {/* ---------------------------------------Toolbar END ----------------------------------*/}
     </>
