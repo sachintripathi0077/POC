@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import QuestionCard from "./QuestionCard";
-import { useState, useEffect } from "react";
 import DropDownButton from "./DropDownButton";
 import FormHeader from "./FormHeader";
+import { postFormQuestions } from "../Redux/actions";
+import { useNavigate } from 'react-router-dom'
 
-function BlankForm() {
+
+function BlankForm({ postQuestionsList, state }) {
+  const navigate = useNavigate();
   const [questionId, setQuestionId] = useState(0);
   const [questionList, setquestionList] = useState([]);
   const [inputType, setInputType] = useState("text");
@@ -24,6 +28,10 @@ function BlankForm() {
     console.log(questionList, "questionList");
   }, [questionList]);
 
+  useEffect(() => {
+    console.log(state, "redux store");
+  }, [state]);
+
   const deleteQuestion = (i) => {
     const list = [...questionList];
     list.splice(i, 1);
@@ -31,19 +39,23 @@ function BlankForm() {
   };
 
   const updatedData = (options, label, index) => {
-    // console.log("updatedData", options, label, index);
     const list = [...questionList];
     list[index] = {
       ...list[index],
       label,
-      options
+      options,
     };
     setquestionList(list);
   };
 
+  const onPreviewClick = () => {
+    postQuestionsList(questionList);
+    navigate(`/preview`);
+  };
+
   return (
     <>
-    <FormHeader/>
+      <FormHeader />
       <div className="container">
         {questionList.map((question, i) => (
           <QuestionCard
@@ -52,10 +64,9 @@ function BlankForm() {
             index={i}
             deleteQuestion={() => deleteQuestion(i)}
             updatedData={updatedData}
-          >
-            {/* Question {i + 1} */}
-          </QuestionCard>
+          ></QuestionCard>
         ))}
+        <button onClick={onPreviewClick}>Preview</button>
       </div>
 
       {/* ---------------------------------------Toolbar Start ----------------------------------*/}
@@ -88,4 +99,15 @@ function BlankForm() {
   );
 }
 
-export default BlankForm;
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    postQuestionsList: (list) => dispatch(postFormQuestions(list)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlankForm);

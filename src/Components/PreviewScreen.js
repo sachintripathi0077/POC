@@ -5,6 +5,8 @@ import PreviewQuestion from "./PreviewQuestion";
 function PreviewScreen() {
   const [state, setstate] = useState([{qid: 1, response: ''}]);
 
+
+
   const mockData = [
     {
       type: "text",
@@ -43,7 +45,9 @@ function PreviewScreen() {
     
 
   };
- 
+//   useEffect(()=>{
+//       console.log("Parent state: ",state)
+//   },[state])
 
   return (
     <div>
