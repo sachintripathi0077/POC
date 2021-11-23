@@ -5,6 +5,8 @@ import DropDownButton from "./DropDownButton";
 import FormHeader from "./FormHeader";
 import { postFormQuestions } from "../Redux/actions";
 import { useNavigate } from 'react-router-dom'
+import { MdAddCircleOutline } from "react-icons/md";
+
 
 
 function BlankForm({ postQuestionsList, state }) {
@@ -55,6 +57,7 @@ function BlankForm({ postQuestionsList, state }) {
 
   return (
     <>
+      &nbsp;
       <FormHeader />
       <div className="container">
         {questionList.map((question, i) => (
@@ -87,10 +90,12 @@ function BlankForm({ postQuestionsList, state }) {
         />
         <button
           type="button"
-          class="btn btn-outline-secondary"
+          className="formtextbutton"
           id="mybtn"
           onClick={addQuestion}
         >
+          <MdAddCircleOutline />
+
           Add Tile
         </button>
       </div>

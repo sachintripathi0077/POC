@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { MdDelete } from "react-icons/md";
+import { MdOutlineDeleteOutline } from "react-icons/md";
+
 
 function QuestionCard({
   children,
@@ -7,7 +10,7 @@ function QuestionCard({
   updatedData,
   index,
 }) {
-  const [label, setLabel] = useState("Label");
+  const [label, setLabel] = useState("");
   const [options, setOptions] = useState(["Option 1"]);
 
   const handleInputChange = (e, i) => {
@@ -35,20 +38,23 @@ function QuestionCard({
     <div className="card">
       {children}
       <span className="delete-btn" onClick={() => deleteQuestion()}>
-        &times;
+        {/* &times; */}
+        <MdDelete />
       </span>
-      Question Label
+      {/* Question Label */}
+      &nbsp;
       <input
         type="text"
         value={label}
         onChange={(e) => setLabel(e.target.value)}
         id="label"
+        placeholder='Enter your question here'
       ></input>
       <br />
-	  {console.log(question, 'asdasd')}
+	  {console.log(question, 'question')}
       {(question.type === "radio" || question.type === "checkbox") && (
         <>
-          <ul>
+          <ul class="qcunlist">
             {options.map((option, i) => {
               return (
                 <li key={i}>
@@ -66,7 +72,9 @@ function QuestionCard({
                         removeOption(i);
                       }}
                     >
-                      Del
+                      {/* Del */}
+                      <MdOutlineDeleteOutline />
+
                     </button>
                   </div>
                 </li>

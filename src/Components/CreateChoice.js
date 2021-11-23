@@ -1,11 +1,12 @@
 import React from "react";
 import Card from "./Card";
+import "../App.css";
+import sslogo from "../img/sslogo.png";
 
 function CreateChoice() {
   return (
-    <div>
+    <div className="createchoicebg">
       <table>
-        <tbody>
         <tr>
           <td>
             <div>
@@ -14,7 +15,7 @@ function CreateChoice() {
                 text={
                   "Create blank form from scratch and customize it according to the requirement."
                 }
-                to={'/createBlank'}
+                to={"/createBlank"}
               />
             </div>
           </td>
@@ -23,13 +24,19 @@ function CreateChoice() {
               <Card
                 title={"Templates"}
                 text={"Select this tile to get pre-created feedback form."}
-                to={'/feedbackTemplate'}
+                to={"/feedbackTemplate"}
               />
             </div>
           </td>
         </tr>
-        </tbody>
       </table>
+      <footer className="footer">
+        <img src={sslogo} alt="Logo not Found" width="80px" align="left" />
+        <p>
+          Copyright ©️ 2021 <b>Super Survey</b> | All Rights Reserved | Terms of
+          Service | Privacy Policy
+        </p>
+      </footer>
     </div>
   );
 }

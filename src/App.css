@@ -39,7 +39,8 @@
 
 .header {
   border-radius: 5px;
-  background-color: rgba(109, 122, 161, 0.63);
+  /* background-color: rgba(109, 122, 161, 0.63); */
+  background-color: #ffeebb;
   padding: 20px;
   margin-top: 0px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -56,15 +57,73 @@ a:active {
 }
 
 .container {
-  /* width: 70%; */
+  /* width: 70%;
   background-color: rgb(219, 226, 239);
   /* float: left; */
   /* margin-left: 10px; */
-  margin-left: 15%;
+  /* margin-left: 15%;
   margin-right: 10%;
   margin-top: 1%;
   box-shadow: 10px 10px 5px #aaaaaa54;
-  height: 100%;
+  height: 100%; */
+
+  margin-left: 16%;
+  margin-right: 20%;
+  overflow: hidden;
+  background-color: #d0cab2;
+  bottom: 0;
+  width: 70%;
+  border-radius: 5px;
+}
+.containerl {
+  /* width: 25%; */
+  background-color: rgba(126, 252, 0, 0.26);
+  padding: 10px;
+  /* float: left; */
+  /* margin: 10px; */
+}
+.containerr {
+  /* width: 70%; */
+  background-color: rgba(0, 130, 252, 0.294);
+  /* float: left; */
+  /* margin-left: 10px; */
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10px;
+}
+/* Home Style Css Starting*/
+.carous {
+  height: 100px;
+}
+.carousalcaptions {
+  color: black;
+  border-color: cornsilk;
+}
+.marque {
+  background-color: #0a183d;
+  color: cornsilk;
+}
+.footer {
+  width: 100%;
+  height: 4rem;
+  /* position: fixed; */
+  bottom: 0;
+  background-color: #0a183d;
+}
+
+.footer p {
+  color: aliceblue;
+
+  text-transform: capitalize;
+  line-height: 4rem;
+}
+/* #buttonlocation {
+  text-align: center;
+} */
+
+/* Home Style Css Ending */
+.createchoicebg {
+  background-color: #ffeebb;
 }
 
 .pullLeft {
@@ -73,7 +132,7 @@ a:active {
 
 .questionCard {
   background-color: rgb(63, 114, 175);
-  margin: 10px;
+  margin: 50px;
   padding: 10px;
   box-shadow: 5px 5px 5px #70707060;
   height: 205px;
@@ -90,8 +149,7 @@ a:active {
   height: 50px;
   box-shadow: 50px 50px 50px #70707060;
 }
-
-.card {
+.homecards {
   /* Properties used for this pen specifically */
   display: flex;
   justify-content: center;
@@ -104,7 +162,24 @@ a:active {
   background: rgb(249, 247, 247);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.25s;
+  margin: 120px;
+  float: inherit;
+}
+.card {
+  /* Properties used for this pen specifically */
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* Properties used for this pen specifically */
+  position: relative;
+  /* float: left;
+  width: 350px;
+  height: 150px; */
+  background: rgb(249, 247, 247);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.25s;
   margin: 50px;
+  float: inherit;
 }
 
 h3 {
@@ -146,13 +221,14 @@ h3 {
 }
 
 .mynav {
-  margin-left: 20%;
+  margin-left: 16%;
   margin-right: 20%;
   overflow: hidden;
   background-color: #333;
   position: fixed;
   bottom: 0;
-  width: 60%;
+  width: 70%;
+  border-radius: 5px;
 }
 
 /* .mynav a {
@@ -175,33 +251,33 @@ h3 {
   color: white;
 } */
 
-button{
+button {
   float: left;
-            display: block;
-            /* color: #f2f2f2; */
-            text-align: center;
-            padding: 12px 16px;
-            text-decoration: none;
-            font-size: 17px;
-            margin: 5px;
+  display: block;
+  /* color: #f2f2f2; */
+  text-align: center;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  margin: 5px;
 }
 
-.headerContainer{
+.headerContainer {
   /* background-color: #61dafb; */
-  width: 72%;
-  margin-left: 20%;
+  width: 70%;
+  margin-left: 16%;
   margin-right: 8%;
   height: 200px;
-  background: rgb(219, 226, 239);
-  box-shadow: 10px 10px 5px #aaaaaa54;
+  /* background: rgb(219, 226, 239); */
+  background-color: #d0cab2;
+  /* box-shadow: 10px 10px 5px #aaaaaa54; */
   transition: box-shadow 0.25s;
   display: flex;
   position: relative;
   border-radius: 5px;
-  
 }
 
-.imageContainer{
+.imageContainer {
   margin: 5px;
   background-color: rgb(249, 247, 247);
   float: left;
@@ -211,42 +287,37 @@ button{
   border-radius: 5px;
 }
 
-.titleContainer{
+.titleContainer {
   float: right;
   margin: 5px;
-  background-color:rgb(249, 247, 247);
+  background-color: rgb(249, 247, 247);
   height: 140px;
   width: 800px;
   border-radius: 5px;
-  
 }
 
-.input-group{
+.input-group {
   width: 700px;
   /* margin-top: 30px;
   margin-bottom: 20px; */
   height: 70px;
-  margin:35px;
+  margin: 35px;
 }
 
-.imageContainer input{
+.imageContainer input {
   width: 100px;
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 105px;
-  
 }
 
-
-
-.heading{
+.heading {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 1rem;
   font-weight: bold;
-
 }
-.img-holder{
+.img-holder {
   margin: auto;
   width: 150px;
   height: 100px;
@@ -254,29 +325,63 @@ button{
   border-radius: 5px;
   /* margin-top: 1rem; */
 }
-.img{
+.img {
   width: 150px;
   height: 140px;
   /* object-fit: cover; */
 }
 #input[type="file"] {
-	display: none;
+  display: none;
 }
-.label{
+input {
+  /* For all Form text Boxes */
+  width: 80%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  /* margin: 8px 0; */
+  margin: 10px auto;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 3s;
+}
+.label {
   width: 100%;
   margin-top: 3rem;
   display: flex;
   justify-content: center;
 }
-.image-upload{
+.image-upload {
   margin: auto;
   width: 200px;
-	height: 25px;
+  height: 25px;
   color: white;
   border-radius: 10px;
   background-color: black;
   text-align: center;
   cursor: pointer;
+}
+
+/* Form Style */
+.formtextbutton {
+  width: 80%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 8px 0;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 3s;
+}
+/* .formtextbox {
+  width: 80%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 8px 0;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 3s;
+} */
+.qcunlist {
+  list-style-type: none;
 }
 
 .navButton{
