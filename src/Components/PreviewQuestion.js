@@ -1,38 +1,12 @@
-// import React, { Component } from 'react'
-
-// export default class PreviewQuestion extends Component {
-//     constructor(props) {
-//         super(props);
-
-//         this.state = {
-//           responses:[],
-//         };
-
-//       }
-//     render() {
-//         return (
-//             <div>
-//                 {this.state.questions.map((question) =>{
-//                     if(question.inputType==='text'){
-//                         {`<p>${question.label}</p>
-//                          <input type='text' onchange={ (e)=> setState({responses:responses.push(e.target.value)})>`}
-//                     }
-//                 })}
-//             </div>
-//         )
-//     }
-// }
-
 import React from "react";
 import { useState, useEffect } from "react";
 
-function PreviewQuestion({ type, options, label,setPreviewState }) {
+function PreviewQuestion({ type, options, label, setPreviewState, id }) {
   const [responses, setresponses] = useState([]);
-    useEffect(()=>{
-        
-        // setPreviewState(responses)
-        console.log(responses)
-    }, [responses])
+
+  useEffect(() => {
+    setPreviewState(responses, id);
+  }, [responses]);
 
   if (type === "text") {
     return (
@@ -43,7 +17,6 @@ function PreviewQuestion({ type, options, label,setPreviewState }) {
             type="text"
             onChange={(e) => {
               setresponses(e.target.value);
-              
             }}
           ></input>
         </div>
@@ -65,7 +38,7 @@ function PreviewQuestion({ type, options, label,setPreviewState }) {
                     name={label}
                     value={op}
                     onClick={() => {
-                      setresponses(op)
+                      setresponses(op);
                     }}
                   />
                   {op}
@@ -89,22 +62,14 @@ function PreviewQuestion({ type, options, label,setPreviewState }) {
                   <input
                     type="checkbox"
                     onChange={(e) => {
-                      // console.log(e.target.checked)
-                      // console.log(op)
-                      let indexOfOp = responses.indexOf(op)
-                      if(op in responses){
-                      // let filteredResponse = responses.filter((r)=>r!=op)
-                      // setresponses([...responses, filteredResponse])
-                      responses.splice(indexOfOp,1)
-                      console.log(responses)
-
-                    }
-                    else{
-                      setresponses([...responses, op])
-                    }
-                  }
-                  }
-                    
+                      let indexOfOp = responses.indexOf(op);
+                      if (e.target.checked === true) {
+                        setresponses([...responses, op]);
+                      } else {
+                        let updatedResponse = responses.splice(indexOfOp, 1);
+                        setresponses([...responses], updatedResponse);
+                      }
+                    }}
                   />
                   {op}
                 </label>
