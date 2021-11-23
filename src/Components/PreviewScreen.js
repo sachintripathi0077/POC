@@ -1,57 +1,62 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import PreviewQuestion from "./PreviewQuestion";
+import store from "../Redux/store";
+import { connect } from "react-redux";
+import axios from 'axios'
 
-function PreviewScreen() {
-  const [state, setstate] = useState([{qid: 1, response: ''}]);
+function PreviewScreen({questionList}) {
+  const [state, setstate] = useState([{ qid: 1, response: "" }]);
 
+//   const mockData = [
+//     {
+//       type: "text",
+//       options: ["a", "b", "c", "d"],
+//       label: "This is a question label",
+//       id: 1,
+//     },
+//     {
+//       type: "radio",
+//       options: ["a", "b", "c", "d"],
+//       label: "This is a question label",
+//       id: 2,
+//     },
+//     {
+//       type: "checkbox",
+//       options: ["a", "b", "c", "d"],
+//       label: "This is a question label",
+//       id: 3,
+//     },
+//     {
+//       type: "date",
+//       options: ["a", "b", "c", "d"],
+//       label: "This is a question label",
+//       id: 4,
+//     },
+//   ];
 
-
-  const mockData = [
-    {
-      type: "text",
-      options: ["a", "b", "c", "d"],
-      label: "This is a question label",
-      id: 1,
-    },
-    {
-      type: "radio",
-      options: ["a", "b", "c", "d"],
-      label: "This is a question label",
-      id: 2,
-    },
-    {
-      type: "checkbox",
-      options: ["a", "b", "c", "d"],
-      label: "This is a question label",
-      id: 3,
-    },
-    {
-      type: "date",
-      options: ["a", "b", "c", "d"],
-      label: "This is a question label",
-      id: 4,
-    },
-  ];
-
-  const setPreviewState = (qState,id) => {
-    let newState = state.filter((question)=>question.qid != id);
+  const setPreviewState = (qState, id) => {
+    let newState = state.filter((question) => question.qid != id);
     let qStateObj = {
-                response: qState,
-                qid:id
-            }
-    newState.push(qStateObj)
-    setstate(newState)
-    
-
+      response: qState,
+      qid: id,
+    };
+    newState.push(qStateObj);
+    setstate(newState);
   };
-//   useEffect(()=>{
-//       console.log("Parent state: ",state)
-//   },[state])
 
+  async function handleOnClick(){
+      let responseData = await axios.post(
+        "http://localhost:3080/responses",
+        state
+      );
+      setstate([])
+  };
+    
   return (
     <div>
-      {mockData.map((q, i) => {
+        
+      {questionList.map((q, i) => {
         return (
           <PreviewQuestion
             type={q.type}
@@ -62,8 +67,16 @@ function PreviewScreen() {
           />
         );
       })}
+
+      <button onClick={()=>{handleOnClick()}}>SUBMIT</button>
     </div>
   );
 }
+const mapStateToProps = (state) => {
+    return {
+      questionList: state.questionsList,
+    };
+  };
 
-export default PreviewScreen;
+
+export default connect(mapStateToProps)(PreviewScreen);

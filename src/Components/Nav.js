@@ -6,9 +6,9 @@ function nav() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <button className="navButton">
             Super Survey
-          </a>
+          </button>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,18 +23,18 @@ function nav() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <button className="navButton">
                     <Link to='/'>
                   Home
                   </Link>
-                </a>
+                </button>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" >
+                <button className="navButton">
                   <Link to='/createChoice'>  
                   Create Form
                   </Link>
-                </a>
+                </button>
               </li>
               
             </ul>

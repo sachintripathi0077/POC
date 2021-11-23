@@ -5,6 +5,7 @@ function CreateChoice() {
   return (
     <div>
       <table>
+        <tbody>
         <tr>
           <td>
             <div>
@@ -27,6 +28,7 @@ function CreateChoice() {
             </div>
           </td>
         </tr>
+        </tbody>
       </table>
     </div>
   );

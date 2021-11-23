@@ -278,3 +278,12 @@ button{
   text-align: center;
   cursor: pointer;
 }
+
+.navButton{
+  text-decoration: none;
+  background-color: inherit;
+  color: white;
+  box-shadow: none;
+  outline:none;
+  border: none;
+}
