@@ -10,7 +10,7 @@ function QuestionCard({
   updatedData,
   index,
 }) {
-  const [label, setLabel] = useState("Enter your question here");
+  const [label, setLabel] = useState("");
   const [options, setOptions] = useState(["Option 1"]);
   const [questionType, setQuestionType] = useState("text");
 
@@ -96,7 +96,7 @@ function QuestionCard({
             })}
           </ul>
           <button type="button" onClick={addOption}>
-            Create Option
+            Add more options
           </button>
         </>
       )}
