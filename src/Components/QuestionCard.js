@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { MdOutlineDeleteOutline } from "react-icons/md";
-
+import DropDownButton from "./DropDownButton";
 
 function QuestionCard({
   children,
@@ -10,8 +10,9 @@ function QuestionCard({
   updatedData,
   index,
 }) {
-  const [label, setLabel] = useState("");
+  const [label, setLabel] = useState("Enter your question here");
   const [options, setOptions] = useState(["Option 1"]);
+  const [questionType, setQuestionType] = useState("text");
 
   const handleInputChange = (e, i) => {
     const optionsList = [...options];
@@ -20,8 +21,12 @@ function QuestionCard({
   };
 
   useEffect(() => {
-    updatedData(options, label, index);
-  }, [options, label]);
+    updatedData(options, label, questionType, index);
+  }, [options, label, questionType]);
+
+  useEffect(() => {
+    console.log(questionType, "questionType");
+  }, [questionType]);
 
   const addOption = () => {
     const optionsList = [...options];
@@ -34,6 +39,7 @@ function QuestionCard({
     optionsList.splice(i, 1);
     setOptions(optionsList);
   };
+
   return (
     <div className="card">
       {children}
@@ -48,13 +54,22 @@ function QuestionCard({
         value={label}
         onChange={(e) => setLabel(e.target.value)}
         id="label"
-        placeholder='Enter your question here'
+        placeholder="Enter your question here"
       ></input>
+      <select
+        onChange={(e) => {
+          setQuestionType(e.target.value);
+        }}
+      >
+        <option value="text">Single Line</option>{" "}
+        <option value="radio">Radio Fields</option>{" "}
+        <option value="checkbox">CheckBox</option>
+        <option value="date">Date</option>
+      </select>
       <br />
-	  {console.log(question, 'question')}
-      {(question.type === "radio" || question.type === "checkbox") && (
+      {(questionType === "radio" || questionType === "checkbox") && (
         <>
-          <ul class="qcunlist">
+          <ul className="qcunlist">
             {options.map((option, i) => {
               return (
                 <li key={i}>
@@ -74,7 +89,6 @@ function QuestionCard({
                     >
                       {/* Del */}
                       <MdOutlineDeleteOutline />
-
                     </button>
                   </div>
                 </li>

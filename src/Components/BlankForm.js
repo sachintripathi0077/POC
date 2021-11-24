@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import QuestionCard from "./QuestionCard";
-import DropDownButton from "./DropDownButton";
 import FormHeader from "./FormHeader";
 import { postFormQuestions } from "../Redux/actions";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { MdAddCircleOutline } from "react-icons/md";
-
-
 
 function BlankForm({ postQuestionsList, state }) {
   const navigate = useNavigate();
   const [questionId, setQuestionId] = useState(0);
   const [questionList, setquestionList] = useState([]);
-  const [inputType, setInputType] = useState("text");
 
   const addQuestion = () => {
     setQuestionId(questionId + 1);
     const questionArr = [...questionList];
     questionArr.push({
       id: questionId,
-      type: inputType,
+      type: "text",
       label: "",
     });
     setquestionList(questionArr);
@@ -40,10 +36,11 @@ function BlankForm({ postQuestionsList, state }) {
     setquestionList(list);
   };
 
-  const updatedData = (options, label, index) => {
+  const updatedData = (options, label, questionType, index) => {
     const list = [...questionList];
     list[index] = {
       ...list[index],
+      type:questionType,
       label,
       options,
     };
@@ -69,25 +66,9 @@ function BlankForm({ postQuestionsList, state }) {
             updatedData={updatedData}
           ></QuestionCard>
         ))}
-        
       </div>
-
       {/* ---------------------------------------Toolbar Start ----------------------------------*/}
       <div className="mynav">
-        <DropDownButton
-          list={
-            <>
-              <option value="text">Single Line</option>{" "}
-              <option value="radio">Radio Fields</option>{" "}
-              <option value="checkbox">CheckBox</option>
-              <option value="date">Date</option>
-            </>
-          }
-          handleChange={(e) => {
-            setInputType(e.target.value);
-            console.log("first", e.target.value);
-          }}
-        />
         <button
           type="button"
           className="formtextbutton"
@@ -95,10 +76,11 @@ function BlankForm({ postQuestionsList, state }) {
           onClick={addQuestion}
         >
           <MdAddCircleOutline />
-
           Add Tile
         </button>
-        <button onClick={onPreviewClick} className='previewbutton'>Preview</button>
+        <button onClick={onPreviewClick} className="previewbutton">
+          Preview
+        </button>
       </div>
       {/* ---------------------------------------Toolbar END ----------------------------------*/}
     </>
