@@ -10,9 +10,11 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 function PreviewScreen({ questionList }) {
-  const [state, setstate] = useState([{ qid: 1, response: "" }]);
+  const [state, setstate] = useState([]);
   const navigate = useNavigate();
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const setPreviewState = (qState, id) => {
     let newState = state.filter((question) => question.qid != id);
     let qStateObj = {
@@ -33,17 +35,17 @@ function PreviewScreen({ questionList }) {
 
   }
 
-  function handleBack(){
+  function handleBack() {
     navigate(`/createBlank`)
   }
 
   return (
     <>
       <div className='resizePreviewCard'>
-      <div class="card px-0 mb-0 mx-50">
-  <div class="card-body">
-        <PreviewHeader />
-      </div></div></div>
+        <div class="card px-0 mb-0 mx-50">
+          <div class="card-body">
+            <PreviewHeader />
+          </div></div></div>
 
       <div>
         <form onSubmit={handleOnClick}>
@@ -62,14 +64,10 @@ function PreviewScreen({ questionList }) {
                     />
 
                   );
-                })}
-
-
-
-
+                })} 
               </div></div></div>
           <div id='previewBackPosition'>
-            
+
             <button type='button' className="btn btn-secondary" id='previewback' onClick={handleBack} >
               {/* <Link to="/successResponse">SUBMIT</Link> */}
               Back
@@ -79,6 +77,8 @@ function PreviewScreen({ questionList }) {
             {/* <Link to="/successResponse">SUBMIT</Link> */}
             SUBMIT
           </button>
+
+
 
         </form>
       </div>

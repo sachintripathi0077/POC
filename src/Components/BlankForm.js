@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { MdAddCircleOutline } from "react-icons/md";
 import axios from "axios";
 import { incrementQuestionId } from "../Redux/actions";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { BiSave } from "react-icons/bi";
 
 function BlankForm({
   postQuestionsList,
@@ -87,6 +89,7 @@ function BlankForm({
       &nbsp;
       
       <div className="container">
+        &nbsp;
       <FormHeader />
         {questionList.map((question, i) => (
           <QuestionCard
@@ -99,7 +102,7 @@ function BlankForm({
         ))}
       </div>
       {/* ---------------------------------------Toolbar Start ----------------------------------*/}
-      <div className="mynav">
+      {/* <div className="mynav">
         <button
           type="button"
           className="formtextbutton"
@@ -108,14 +111,36 @@ function BlankForm({
         >
           <MdAddCircleOutline />
           Add Tile
-        </button>
-        <button onClick={viewResponse} className="previewbutton">
-          Responses
+        </button> */}
+         <div className="mynav">
+        <button
+          type="button"
+          class="btn btn-primary"
+          // id="formtextbutton"
+          id='previewbutton2'
+          onClick={addQuestion}
+        >
+          <MdAddCircleOutline /> Add Question
         </button>
 
-        <button onClick={onPreviewClick} className="previewbutton">
-          Preview
+       
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="previewbutton"
+          onClick={onPreviewClick}
+        >
+          <MdOutlineRemoveRedEye /> Preview
         </button>
+        <button type="button" class="btn btn-secondary" id="previewbutton">
+          <BiSave /> Save Form
+        </button>
+        <button onClick={viewResponse} id="previewbutton" className='btn btn-secondary'>
+          Responses
+        </button>
+        {/* <button onClick={onPreviewClick} className="previewbutton">
+          Preview
+        </button> */}
       </div>
       {/* ---------------------------------------Toolbar END ----------------------------------*/}
     </>

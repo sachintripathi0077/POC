@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { postFormHeader } from "../Redux/actions";
 import { connect } from "react-redux";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-
 
 class FormHeader extends Component {
   constructor(props) {
@@ -15,18 +12,18 @@ class FormHeader extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-//_____________________________________________________________________________________
-  // getData(){
-  //   if(this.props.headerContent.title === "" || this.props.headerContent.profileImg === "" || this.props.headerContent.desc === ""){
-  //     this.setState({title:this.props.headerContent.title, profileImg:this.props.headerContent.profileImg, desc:this.props.headerContent.desc},() => (this.props.headerContent(this.state)))
-  //     console.log(this.state.title)
-  //   }
-  // }
-  // componentDidMount(){
-  //   this.getData();
-  // }
-//_____________________________________________________________________________________
 
+  componentDidMount(){
+    console.log(this.props.headerContentObj,'headerContent ')
+    const {headerContentObj}= this.props
+    if(headerContentObj){
+      this.setState({
+        profileImg: headerContentObj.profileImg,
+        title: headerContentObj.title,
+        desc: headerContentObj.desc,
+      })
+    }
+  }
 
   handleImage = (event) => {
     var url = URL.createObjectURL(event.target.files[0]);
@@ -37,14 +34,8 @@ class FormHeader extends Component {
 
   handleChange = (e) => {
     const titl = e.target.value
-    // console.log(e.target.value);
     this.setState({ title: e.target.value }, () => (this.props.headerContent(this.state)))
-    // this.setState({ title: e.target.value });
   };
-  // setTitle = (titl) => {
-  //   this.setState({ title: titl });
-  //   this.props.headerContent(this.state);
-  // }
 
   handleDesc = (e) => {
     this.setState({ desc: e.target.value }, () => (this.props.headerContent(this.state)));
@@ -53,7 +44,6 @@ class FormHeader extends Component {
   }
 
   render() {
-    // const { profileImg } = this.state
     return (
       <div className="headerContainer">
         <div className="imageContainer">
@@ -108,7 +98,7 @@ class FormHeader extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    state: state,
+    headerContentObj: state.headerContent,
   };
 };
 const mapDispatchToProps = (dispatch) => {

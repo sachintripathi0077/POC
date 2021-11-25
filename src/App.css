@@ -24,6 +24,71 @@
   color: white;
 }
 
+#cardinputfield {
+  margin-right: auto;
+  margin-left: auto;
+  /* margin-right: 500px; */
+  /* margin: auto; */
+}
+.cardinputfielddiv {
+  float: right;
+  /* float:left; */
+  align-content: stretch;
+  margin: 5px;
+  /* background-color: rgb(249, 247, 247); */
+  /* height: 140px; */
+  /* width: 900px; */
+  width: 100%;
+  /* border-radius: 5px; */
+}
+.optionsdiv {
+  float: left;
+  margin: 5px;
+  /* background-color: rgb(249, 247, 247); */
+  width: 700px;
+  border-radius: 5px;
+  /* width: 636px; */
+  max-width: 80%;
+  min-width: 25%;
+  margin-top: -10px;
+}
+#addoptionbutton {
+  margin-left: 310px;
+  margin-right: 310px;
+  /* flex: 1; */
+  /* white-space: unset; */
+  /* -ms-line-break:initial; */
+}
+
+.flex-container {
+  display: flex;
+}
+#flex-child1 {
+  flex: 2;
+
+  /* border: 2px solid yellow; */
+}
+#flex-child2 {
+  flex: 1;
+  /* border: 2px solid yellow; */
+}
+#disabledfields {
+  /* margin-right: 500;
+  display: flex;
+  float: left; */
+
+  float: left;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-bottom: 25px;
+  /* margin-right: 0px; */
+  /* margin: 25px; */
+  width: 690px;
+  max-width: 70%;
+  min-width: 25%;
+  /* border-radius: 5px; */
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -70,7 +135,7 @@ a:active {
   margin-left: 16%;
   margin-right: 20%;
   overflow: hidden;
-  background-color: #d0cab2;
+  background-color:whitesmoke;
   margin-bottom: 13%;
   width: 70%;
   border-radius: 5px;
@@ -221,13 +286,12 @@ h3 {
 }
 
 .mynav {
-  margin-left: 16%;
+  margin-left: 19%;
   margin-right: 20%;
-  overflow: hidden;
-  background-color: #333;
+  background-color: dimgray;
   position: fixed;
   bottom: 0;
-  width: 70%;
+  width: 64%;
   border-radius: 5px;
 }
 
@@ -404,7 +468,7 @@ input {
 }
 
 /* Form Style */
-.formtextbutton {
+/* .formtextbutton {
   width: 72%;
   border: 2px solid #aaa;
   border-radius: 4px;
@@ -412,7 +476,19 @@ input {
   padding: 8px;
   box-sizing: border-box;
   transition: 3s;
+} */
+#formtextbutton {
+  width: 42%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 8px;
+  /* margin-left: 25px; */
+  padding: 8px;
+  box-sizing: border-box;
+  transition: 3s;
 }
+
+
 /* .formtextbox {
   width: 80%;
   border: 2px solid #aaa;
@@ -435,7 +511,7 @@ input {
   border: none;
 }
 
-.previewbutton {
+/* .previewbutton {
   width: 12%;
   border: 2px solid #aaa;
   border-radius: 4px;
@@ -443,14 +519,46 @@ input {
   padding: 8px;
   box-sizing: border-box;
   transition: 3s;
-}
+} */
+
+
+  #previewbutton {
+    width: 100%;
+    max-width: 20%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 6px;
+    padding: 8px;
+    box-sizing: border-box;
+    
+  }
+  #previewbutton2{
+    width: 35%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  .responsebutton {
+    width: 100%;
+    max-width: 25%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 6px;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: 3s;
+  }
+  
 
 #previewsubmit {
   position: absolute;
   width: 10%;
   border: 2px solid #aaa;
   border-radius: 4px;
-  margin: 8px -100px;
+  margin: 8px 460px;
   padding: 8px;
   box-sizing: border-box;
 }
