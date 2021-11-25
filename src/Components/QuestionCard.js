@@ -10,9 +10,9 @@ function QuestionCard({
   updatedData,
   index,
 }) {
-  const [label, setLabel] = useState("");
-  const [options, setOptions] = useState(["Option 1"]);
-  const [questionType, setQuestionType] = useState("text");
+  const [label, setLabel] = useState(question.label);
+  const [options, setOptions] = useState(question.options || ['Option 1']);
+  const [questionType, setQuestionType] = useState(question.type);
 
   const handleInputChange = (e, i) => {
     const optionsList = [...options];
@@ -60,6 +60,7 @@ function QuestionCard({
         onChange={(e) => {
           setQuestionType(e.target.value);
         }}
+        value={question.type}
       >
         <option value="text">Single Line</option>{" "}
         <option value="radio">Radio Fields</option>{" "}
@@ -81,6 +82,7 @@ function QuestionCard({
                         handleInputChange(e, i);
                       }}
                     ></input>
+                      
                     <button
                       className="btn btn-small"
                       onClick={() => {

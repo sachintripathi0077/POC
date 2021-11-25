@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+
+
 function PreviewQuestion({ type, options, label, setPreviewState, id }) {
   const [responses, setresponses] = useState([]);
 
@@ -11,14 +13,30 @@ function PreviewQuestion({ type, options, label, setPreviewState, id }) {
   if (type === "text") {
     return (
       <>
-        <h1>{label}</h1>
-        <div>
-          <input
-            type="text"
-            onChange={(e) => {
-              setresponses(e.target.value);
-            }}
-          ></input>
+        <div className="resizePreviewCard2">
+          <div className="card  p-0 mt-0 mb-1 mx-0">
+            <div className="card-body">
+              <div>
+                <div className="card mt-0 mb-0">
+                  <div className="card-body opdiv">
+                    {label}
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="card  mt-1 mb-0">
+                  <div className="card-body pr-0 opdiv">
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        setresponses(e.target.value);
+                      }}
+                    ></input>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </>
     );
@@ -26,56 +44,140 @@ function PreviewQuestion({ type, options, label, setPreviewState, id }) {
   if (type === "radio") {
     return (
       <>
-        <h1>{label}</h1>
-        <div>
-          {options.map((op) => {
-            return (
-              <>
-                {" "}
-                <label>
+        <div className="resizePreviewCard2">
+          <div className="card  p-0 mt-0 mb-1 mx-0">
+            <div className="card-body">
+              <div className="card mt-0 mb-0">
+                <div className="card-body opdiv ">
+                  {label}
+                </div>
+              </div>
+              <div>
+                <div className="card mt-1 mb-0">
+                  <div className="card-body pr-0">
+                    {options.map((op) => {
+                      return (
+                        <>
+                          {" "}
+                          {/* <label>
                   <input
                     type="radio"
-                    name={label}
+                    name="radAnswer"
                     value={op}
                     onClick={() => {
                       setresponses(op);
                     }}
-                  />
-                  {op}
-                </label>
-              </>
-            );
-          })}
+                  /> 
+
+                    {op}
+                 </label> */}
+
+                          <div className="form-check">
+                            <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" onClick={() => {
+                              setresponses(op);
+                            }} />
+                            <div className="opdiv">
+                              <label className="form-check-label" for="exampleRadios1">
+                                {op}
+                              </label>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </>
     );
   }
   if (type === "checkbox") {
     return (
+      // <>
+      //   <h1>{label}</h1>
+      //   <div>
+      //     {options.map((op) => {
+      //       return (
+      //         <>
+      //           <label>
+      //             <input
+      //               type="checkbox"
+      //               onChange={(e) => {
+      //                 let indexOfOp = responses.indexOf(op);
+      //                 if (e.target.checked === true) {
+      //                   setresponses([...responses, op]);
+      //                 } else {
+      //                   let updatedResponse = responses.splice(indexOfOp, 1);
+      //                   setresponses([...responses], updatedResponse);
+      //                 }
+      //               }}
+      //             />
+      //             {op}
+      //           </label>
+      //         </>
+      //       );
+      //     })}
+      //   </div>
+      // </>
       <>
-        <h1>{label}</h1>
-        <div>
-          {options.map((op) => {
-            return (
-              <>
-                <label>
-                  <input
-                    type="checkbox"
-                    onChange={(e) => {
-                      let indexOfOp = responses.indexOf(op);
-                      if (e.target.checked === true) {
-                        setresponses([...responses, op]);
-                      } else {
-                        let updatedResponse = responses.splice(indexOfOp, 1);
-                        setresponses([...responses], updatedResponse);
-                      }
-                    }}
-                  />
-                  {op}
-                </label>
-              </>
-            );
-          })}
+        <div className="resizePreviewCard2">
+          <div className="card  p-0 mt-0 mb-1 mx-0">
+            <div className="card-body">
+              <div>
+                <div className="card mt-0 mb-0">
+                  <div className="card-body opdiv">
+                    {label}
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="card  mt-1 mb-0">
+                  <div className="card-body pr-0">
+                    {options.map((op) => {
+                      return (
+                        <>
+                          {/* <label>
+                            <input
+                              type="checkbox"
+                              onChange={(e) => {
+                                let indexOfOp = responses.indexOf(op);
+                                if (e.target.checked === true) {
+                                  setresponses([...responses, op]);
+                                } else {
+                                  let updatedResponse = responses.splice(indexOfOp, 1);
+                                  setresponses([...responses], updatedResponse);
+                                }
+                              }}
+                            />
+                            {op}
+                          </label> */}
+                          <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value={op} id="flexCheckDefault" onChange={(e) => {
+                              let indexOfOp = responses.indexOf(op);
+                              if (e.target.checked === true) {
+                                setresponses([...responses, op]);
+                              } else {
+                                let updatedResponse = responses.splice(indexOfOp, 1);
+                                setresponses([...responses], updatedResponse);
+                              }
+                            }} />
+                            <div className="opdiv">
+                              <label className="form-check-label" for="flexCheckDefault">
+                                {op}
+                              </label>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </>
     );
@@ -83,7 +185,7 @@ function PreviewQuestion({ type, options, label, setPreviewState, id }) {
   if (type === "dropdown") {
     return (
       <>
-        <h1>{label}</h1>
+        {label}
         <div>
           {options.map((op) => {
             return (
@@ -101,7 +203,7 @@ function PreviewQuestion({ type, options, label, setPreviewState, id }) {
   if (type === "date") {
     return (
       <>
-        <h1>{label}</h1>
+        {/* <h1>{label}</h1>
         <div>
           <input
             type="date"
@@ -109,6 +211,31 @@ function PreviewQuestion({ type, options, label, setPreviewState, id }) {
               setresponses(e.target.value);
             }}
           ></input>
+        </div> */}
+        <div className="resizePreviewCard2">
+          <div className="card  p-0 mt-0 mb-1 mx-0">
+            <div className="card-body">
+              <div>
+                <div className="card mt-0 mb-0">
+                  <div className="card-body opdiv">
+                    {label}
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="card  mt-1 mb-0">
+                  <div className="card-body pr-0">
+                    <input
+                      type="date"
+                      onChange={(e) => {
+                        setresponses(e.target.value);
+                      }}
+                    ></input>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </>
     );

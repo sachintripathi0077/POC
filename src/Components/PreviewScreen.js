@@ -5,13 +5,13 @@ import store from "../Redux/store";
 import { connect } from "react-redux";
 import axios from "axios";
 import PreviewHeader from "./PreviewHeader";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { useNavigate } from 'react-router-dom'
 
 function PreviewScreen({ questionList }) {
- const [state, setstate] = useState([{ qid: 1, response: "" }]);
- const navigate = useNavigate();
+  const [state, setstate] = useState([{ qid: 1, response: "" }]);
+  const navigate = useNavigate();
 
   const setPreviewState = (qState, id) => {
     let newState = state.filter((question) => question.qid != id);
@@ -32,33 +32,53 @@ function PreviewScreen({ questionList }) {
     navigate(`/successResponse`);
 
   }
- 
+
+  function handleBack(){
+    navigate(`/createBlank`)
+  }
+
   return (
     <>
-      <div>
+      <div className='resizePreviewCard'>
+      <div class="card px-0 mb-0 mx-50">
+  <div class="card-body">
         <PreviewHeader />
-      </div>
+      </div></div></div>
 
       <div>
         <form onSubmit={handleOnClick}>
-          {questionList.map((q, i) => {
-            return (
-              <PreviewQuestion
-                type={q.type}
-                label={q.label}
-                options={q.options}
-                setPreviewState={setPreviewState}
-                id={q.id}
-              />
-            );
-          })}
+          <div className="resizePreviewCard">
+            <div className="card mt-2 mb-0 px-0">
+              <div className="card-body">
+                {questionList.map((q, i) => {
+                  return (
 
+                    <PreviewQuestion
+                      type={q.type}
+                      label={q.label}
+                      options={q.options}
+                      setPreviewState={setPreviewState}
+                      id={q.id}
+                    />
+
+                  );
+                })}
+
+
+
+
+              </div></div></div>
+          <div id='previewBackPosition'>
+            
+            <button type='button' className="btn btn-secondary" id='previewback' onClick={handleBack} >
+              {/* <Link to="/successResponse">SUBMIT</Link> */}
+              Back
+            </button>
+          </div>
           <button type="submit" className="btn btn-primary" id='previewsubmit' >
             {/* <Link to="/successResponse">SUBMIT</Link> */}
             SUBMIT
           </button>
-    )
-
 
         </form>
       </div>

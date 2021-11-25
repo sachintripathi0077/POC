@@ -5,14 +5,27 @@ import FormHeader from "./FormHeader";
 import { postFormQuestions } from "../Redux/actions";
 import { useNavigate } from "react-router-dom";
 import { MdAddCircleOutline } from "react-icons/md";
+import axios from "axios";
+import { incrementQuestionId } from "../Redux/actions";
 
-function BlankForm({ postQuestionsList, state }) {
+function BlankForm({
+  postQuestionsList,
+  existingQuestionsList,
+  incrementQuestionId,
+  questionId,
+  headerContent
+}) {
   const navigate = useNavigate();
-  const [questionId, setQuestionId] = useState(0);
   const [questionList, setquestionList] = useState([]);
 
+  useEffect(() => {
+    if (existingQuestionsList !== undefined) {
+      setquestionList(existingQuestionsList);
+    }
+  }, []);
+
   const addQuestion = () => {
-    setQuestionId(questionId + 1);
+    
     const questionArr = [...questionList];
     questionArr.push({
       id: questionId,
@@ -20,15 +33,14 @@ function BlankForm({ postQuestionsList, state }) {
       label: "",
     });
     setquestionList(questionArr);
+    incrementQuestionId();
+    //scrolling logic 
+    window.scrollTo(0,document.body.scrollHeight);
   };
 
   useEffect(() => {
     console.log(questionList, "questionList");
   }, [questionList]);
-
-  useEffect(() => {
-    console.log(state, "redux store");
-  }, [state]);
 
   const deleteQuestion = (i) => {
     const list = [...questionList];
@@ -52,11 +64,30 @@ function BlankForm({ postQuestionsList, state }) {
     navigate(`/preview`);
   };
 
+  const viewResponse = ()=>{
+    navigate(`/responses`)
+  }
+
+  const onSaveClick = async () => {
+    const form = {
+      questionList,
+      headerContent
+    }
+    try {
+      const response = await axios.post("http://localhost:3080/savedForms", form);
+      console.log(response, form, 'saved')
+    } catch (e) {
+      console.log("error ", e);
+    }
+    alert("form saved");
+  };
+
   return (
     <>
       &nbsp;
-      <FormHeader />
+      
       <div className="container">
+      <FormHeader />
         {questionList.map((question, i) => (
           <QuestionCard
             key={question.id}
@@ -78,6 +109,10 @@ function BlankForm({ postQuestionsList, state }) {
           <MdAddCircleOutline />
           Add Tile
         </button>
+        <button onClick={viewResponse} className="previewbutton">
+          Responses
+        </button>
+
         <button onClick={onPreviewClick} className="previewbutton">
           Preview
         </button>
@@ -89,12 +124,15 @@ function BlankForm({ postQuestionsList, state }) {
 
 const mapStateToProps = (state) => {
   return {
-    state: state,
+    existingQuestionsList: state.questionsList,
+    questionId: state.questionId,
+    headerContent: state.headerContent
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
     postQuestionsList: (list) => dispatch(postFormQuestions(list)),
+    incrementQuestionId: () => dispatch(incrementQuestionId()),
   };
 };
 

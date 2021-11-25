@@ -71,7 +71,7 @@ a:active {
   margin-right: 20%;
   overflow: hidden;
   background-color: #d0cab2;
-  bottom: 0;
+  margin-bottom: 13%;
   width: 70%;
   border-radius: 5px;
 }
@@ -264,12 +264,12 @@ button {
 
 .headerContainer {
   /* background-color: #61dafb; */
-  width: 69%;
-  margin-left: 16%;
-  margin-right: 8%;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
   height: 200px;
   /* background: rgb(219, 226, 239); */
-  background-color: #d0cab2;
+  background-color: whitesmoke;
   /* box-shadow: 10px 10px 5px #aaaaaa54; */
   transition: box-shadow 0.25s;
   display: flex;
@@ -287,21 +287,63 @@ button {
   border-radius: 5px;
 }
 
-.titleContainer {
+/* .titleContainer {
   float: right;
   margin: 5px;
   background-color: rgb(249, 247, 247);
   height: 140px;
   width: 1100px;
   border-radius: 5px;
+} */
+
+.titleCont{
+  margin: 5px;
+  background-color: rgb(249, 247, 247);
+  height: 140px;
+  width: 1200px;
+  border-radius: 5px;
+  text-align: left;
+  margin-left: 20px;
+
+}
+
+body{
+  padding-top: 65px;
+}
+
+.navbar{
+  height: auto;
+
+}
+
+h1{
+  margin-top: 30px;
+}
+.headDescriptionPos{
+  margin-left: 10px;
+}
+
+#standard-basic{
+  width: auto;
+}
+
+.titleContainer {
+  float: right;
+  margin: 5px;
+  background-color: rgb(249, 247, 247);
+  height: 140px;
+  width: 1000px;
+  border-radius: 5px;
+  text-align: left;
+  margin-left: 20px;
 }
 
 .input-group {
-  width: 1000px;
+  width: auto;
   /* margin-top: 30px;
   margin-bottom: 20px; */
-  height: 70px;
-  margin: 35px;
+  height: 60px;
+  margin: 5px;
 }
 
 .imageContainer input {
@@ -342,7 +384,7 @@ input {
   margin: 10px auto;
   padding: 8px;
   box-sizing: border-box;
-  transition: 3s;
+ 
 }
 .label {
   width: 100%;
@@ -405,15 +447,50 @@ input {
 
 #previewsubmit {
   position: absolute;
-  width: 12%;
+  width: 10%;
   border: 2px solid #aaa;
   border-radius: 4px;
   margin: 8px -100px;
   padding: 8px;
   box-sizing: border-box;
-  transition: 3s;
 }
+#previewback{
+  position:absolute;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  margin: 8px -625px;
+
+  padding: 8px;
+  width: 5%;
+  box-sizing: border-box;
+
+}
+
+
 
 .successScreen{
   margin-top: 300px;
+}
+
+.resizePreviewCard{
+  width: auto;
+  margin-left: 13%;
+  margin-right: 12%;
+  padding: -10;
+}
+
+.resizePreviewCard2{
+  width: auto;
+  padding:0;
+}
+
+.decreaseCardPadding{
+  padding: 0px;
+}
+
+.opdiv{
+  /* margin-left: -90%; */
+  text-align: left;
+  font-size: 20px;
+  font-family: monospace;
 }

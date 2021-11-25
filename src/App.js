@@ -11,7 +11,7 @@ import FeedbackTemplate from "./Components/FeedbackTemplate";
 import PreviewScreen from "./Components/PreviewScreen";
 import store from "./Redux/store";
 import SuccessResponse from './Components/SuccessResponse'
-
+import Responses from "./Components/Responses";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
           <Route exact path = 'feedbackTemplate' element={<FeedbackTemplate/>} />
           <Route exact path= '/preview' element={<PreviewScreen/>} />
           <Route exact path = 'successResponse' element={<SuccessResponse/>}/>
-
+          <Route exact path = 'responses' element={<Responses/>}/>
 
           {/* <Route path="invoices" element={<Invoices />} /> */}
         </Routes>
