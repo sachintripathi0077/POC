@@ -9,13 +9,15 @@ import axios from "axios";
 import { incrementQuestionId } from "../Redux/actions";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { BiSave } from "react-icons/bi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function BlankForm({
   postQuestionsList,
   existingQuestionsList,
   incrementQuestionId,
   questionId,
-  headerContent
+  headerContent,
 }) {
   const navigate = useNavigate();
   const [questionList, setquestionList] = useState([]);
@@ -27,7 +29,6 @@ function BlankForm({
   }, []);
 
   const addQuestion = () => {
-    
     const questionArr = [...questionList];
     questionArr.push({
       id: questionId,
@@ -36,8 +37,8 @@ function BlankForm({
     });
     setquestionList(questionArr);
     incrementQuestionId();
-    //scrolling logic 
-    window.scrollTo(0,document.body.scrollHeight);
+    //scrolling logic
+    window.scrollTo(0, document.body.scrollHeight);
   };
 
   useEffect(() => {
@@ -54,7 +55,7 @@ function BlankForm({
     const list = [...questionList];
     list[index] = {
       ...list[index],
-      type:questionType,
+      type: questionType,
       label,
       options,
     };
@@ -66,31 +67,33 @@ function BlankForm({
     navigate(`/preview`);
   };
 
-  const viewResponse = ()=>{
-    navigate(`/responses`)
-  }
+  const viewResponse = () => {
+    navigate(`/responses`);
+  };
 
   const onSaveClick = async () => {
     const form = {
       questionList,
-      headerContent
-    }
+      headerContent,
+    };
     try {
-      const response = await axios.post("http://localhost:3080/savedForms", form);
-      console.log(response, form, 'saved')
+      const response = await axios.post(
+        "http://localhost:3080/savedForms",
+        form
+      );
+      console.log(response, form, "saved");
     } catch (e) {
       console.log("error ", e);
     }
-    alert("form saved");
+    toast("form saved");
   };
 
   return (
     <>
       &nbsp;
-      
       <div className="container">
         &nbsp;
-      <FormHeader />
+        <FormHeader />
         {questionList.map((question, i) => (
           <QuestionCard
             key={question.id}
@@ -112,18 +115,17 @@ function BlankForm({
           <MdAddCircleOutline />
           Add Tile
         </button> */}
-         <div className="mynav">
+      <div className="mynav">
         <button
           type="button"
           className="btn btn-primary"
           // id="formtextbutton"
-          id='previewbutton2'
+          id="previewbutton2"
           onClick={addQuestion}
         >
           <MdAddCircleOutline /> Add Question
         </button>
 
-       
         <button
           type="button"
           className="btn btn-secondary"
@@ -132,16 +134,26 @@ function BlankForm({
         >
           <MdOutlineRemoveRedEye /> Preview
         </button>
-        <button type="button" className="btn btn-secondary" id="previewbutton" onClick={onSaveClick}>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          id="previewbutton"
+          onClick={onSaveClick}
+        >
           <BiSave /> Save Form
         </button>
-        <button onClick={viewResponse} id="previewbutton" className='btn btn-secondary'>
+        <button
+          onClick={viewResponse}
+          id="previewbutton"
+          className="btn btn-secondary"
+        >
           Responses
         </button>
         {/* <button onClick={onPreviewClick} className="previewbutton">
           Preview
         </button> */}
       </div>
+      <ToastContainer />
       {/* ---------------------------------------Toolbar END ----------------------------------*/}
     </>
   );
@@ -151,7 +163,7 @@ const mapStateToProps = (state) => {
   return {
     existingQuestionsList: state.questionsList,
     questionId: state.questionId,
-    headerContent: state.headerContent
+    headerContent: state.headerContent,
   };
 };
 const mapDispatchToProps = (dispatch) => {

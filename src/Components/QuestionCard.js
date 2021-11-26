@@ -93,6 +93,7 @@ function QuestionCard({
               <select
                 class="form-select"
                 id="cardinputfield"
+                value={question.type}
                 aria-label="Default select example"
                 onChange={(e) => {
                   setQuestionType(e.target.value);

@@ -720,3 +720,8 @@ h4{
 #dataTr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.export{
+  float: right;
+}
+
