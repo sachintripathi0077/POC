@@ -1,9 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 import Card from "./Card";
 import "../App.css";
 import sslogo from "../img/sslogo.png";
+import { postFormHeader, postFormQuestions } from "../Redux/actions";
+import axios from "axios";
 
-function CreateChoice() {
+function CreateChoice({ postQuestionsList, postHeaderContent }) {
+  const navigate = useNavigate();
+  const [savedForm, setSavedForm] = useState("");
+
+  const goToBlankForm = () => {
+    postQuestionsList([]);
+    postHeaderContent({});
+    navigate("/createBlank");
+  };
+
+  useEffect(async () => {
+    try {
+      const response = await axios.get("http://localhost:3080/savedForms");
+      console.log(response.data);
+      if (response.data && response.data.length > 0) {
+        const savedDetails = response.data[response.data.length - 1];
+        console.log(savedDetails, "saveddetails");
+        setSavedForm(savedDetails);
+      }
+    } catch (e) {
+      console.log("error", e);
+    }
+  }, []);
+
+  const goToSavedForm = () => {
+    postQuestionsList(savedForm.questionList);
+    postHeaderContent(savedForm.headerContent);
+    navigate("/createBlank");
+  };
+
   return (
     <div className="createchoicebg">
       <table>
@@ -15,7 +48,7 @@ function CreateChoice() {
                 text={
                   "Create blank form from scratch and customize it according to the requirement."
                 }
-                to={"/createBlank"}
+                onClick={goToBlankForm}
               />
             </div>
           </td>
@@ -28,8 +61,24 @@ function CreateChoice() {
               />
             </div>
           </td>
+          {savedForm && (
+            <td>
+              <div>
+                <Card
+                  title={
+                    (savedForm.headerContent.title &&
+                      savedForm.headerContent.title.trim()) ||
+                    "Untitled Form"
+                  }
+                  text={"Click to edit the previously saved form"}
+                  onClick={goToSavedForm}
+                />
+              </div>
+            </td>
+          )}
         </tr>
       </table>
+
       <footer className="footer">
         <img src={sslogo} alt="Logo not Found" width="80px" align="left" />
         <p>
@@ -41,4 +90,19 @@ function CreateChoice() {
   );
 }
 
-export default CreateChoice;
+const mapStateToProps = (state) => {
+  return {
+    existingQuestionsList: state.questionsList,
+    questionId: state.questionId,
+    headerContent: state.headerContent,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    postQuestionsList: (list) => dispatch(postFormQuestions(list)),
+    postHeaderContent: (headerContent) =>
+      dispatch(postFormHeader(headerContent)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateChoice);

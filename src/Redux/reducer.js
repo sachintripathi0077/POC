@@ -4,7 +4,7 @@ import {
   INCREMENT_QUESTION_ID,
 } from "./actions";
 
-const initialState = { questionsList: [], questionId: 0 };
+const initialState = { questionsList: [], questionId: 0, headerContent:{} };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case POST_FORM_QUESTIONS:

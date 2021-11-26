@@ -21,7 +21,8 @@ function App() {
       
       
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/home" element={<Home />} />
           <Route  exact path="createChoice" element={<CreateChoice/>} />
           <Route exact path = 'createBlank' element={<BlankForm/>} />
           <Route exact path = 'feedbackTemplate' element={<FeedbackTemplate/>} />

@@ -3,91 +3,50 @@ import Header from "./Header";
 import "../App.css";
 import { Carousel, Card, CardGroup } from "react-bootstrap";
 import sslogo from "../img/sslogo.png";
-import slide1 from "../img/slide1.jpg";
-import slide2 from "../img/slide2.png";
-import slide3 from "../img/slide3.png";
+import mainslide from "../img/mainslide.png";
 import personalcard from "../img/personalcard.jpg";
 import educationcard from "../img/educationcard.jpg";
 import workcard from "../img/workcard.jpg";
+import { VscAdd } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 
 
 function Home() {
-    return (
-        <div>
-      {/* Caraousal Starting */}
-      <Carousel class="carous">
-        <Carousel.Item interval={500} style={{ height: "500px" }}>
-          <img
-            className="d-block w-100"
-            src={slide1}
-            alt="First slide"
-            style={{ height: "600px" }}
-          />
-          <Carousel.Caption>
-            <h2 class="carousalcaptions">
-              <b>Let built-in intelligence work for you</b>
-            </h2>
-            <p class="carousalcaptions">
-              <b>
-                Collect the right feedback for your goals, no matter your skill
-                level. Built-in AI and smart recommendations do the heavy
-                lifting for you.
-              </b>
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item interval={500} style={{ height: "500px" }}>
-          <img
-            className="d-block w-100"
-            src={slide2}
-            alt="Second slide"
-            style={{ height: "500px" }}
-          />
-          <Carousel.Caption>
-            <h3>
-              <b>Quickly turn insights into actions</b>
-            </h3>
-            <p>
-              <b>
-                Visualize data in seconds with powerful, real-time charts and
-                automatically generated reports. Easily export to Excel for
-                customized, in-depth analysis.
-              </b>
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item interval={500} style={{ height: "500px" }}>
-          <img
-            className="d-block w-100"
-            src={slide3}
-            alt="Third slide"
-            style={{ height: "500px" }}
-          />
-          <Carousel.Caption>
-            <h3 class="carousalcaptions">
-              <b>Increase your reach</b>
-            </h3>
-            <p class="carousalcaptions">
-              <b>
-                Seamlessly integrate with favorite apps to connect with
-                audiences where they are. Easily share surveys to collaborate
-                across groups. Ensure everyone’s voice is heard with
-                multilingual support in Forms.
-              </b>
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-      {/* Caraousal Ending*/}
-      <marquee class="marque">
-        <h2>
-          <b>Get feedback effortlessly with surveys, polls, and quizzes.</b>
-        </h2>
-      </marquee>
-      <Header />
-      &nbsp;
-      <h1>Get a head start with templates</h1>
+  return (
+    <div>
+      <br />
       <div>
+        <div class="column">
+          <img src={mainslide} alt="mainslide" width="100%"></img>
+        </div>
+        <div class="column2">
+          <h1>
+            Get Started with <b>Super Survey</b>
+          </h1>
+          <br />
+          <Link to="/createChoice">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg"
+              id="buttonlocation"
+              style={{ float: "inherit" }}
+            >
+              <b>
+                <VscAdd /> Create Form
+              </b>
+            </button>
+          </Link>
+
+        </div>
+      </div>
+      <marquee class="marque">
+        <p>
+          <b>Get feedback effortlessly with surveys, polls, and quizzes.</b>
+        </p>
+      </marquee>
+
+      <h1 style={{ textAlign: "center" }}>Get a head start with templates</h1>
+      <div style={{ textAlign: "center" }}>
         Choose from a variety of surveys, questionnaires, and other
         professionally-designed templates to kick things off quickly.
       </div>
@@ -154,7 +113,7 @@ function Home() {
       </footer>
       {/* Footer Ending */}
     </div>
-    )
+  )
 }
 
 export default Home

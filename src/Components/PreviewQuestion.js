@@ -7,7 +7,7 @@ function PreviewQuestion({ type, options, label, setPreviewState, id }) {
   const [responses, setresponses] = useState([]);
 
   useEffect(() => {
-    setPreviewState(responses, id);
+    setPreviewState(responses, id, label);
   }, [responses]);
 
   if (type === "text") {
@@ -59,19 +59,6 @@ function PreviewQuestion({ type, options, label, setPreviewState, id }) {
                       return (
                         <>
                           {" "}
-                          {/* <label>
-                  <input
-                    type="radio"
-                    name="radAnswer"
-                    value={op}
-                    onClick={() => {
-                      setresponses(op);
-                    }}
-                  /> 
-
-                    {op}
-                 </label> */}
-
                           <div className="form-check">
                             <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" onClick={() => {
                               setresponses(op);
@@ -96,32 +83,6 @@ function PreviewQuestion({ type, options, label, setPreviewState, id }) {
   }
   if (type === "checkbox") {
     return (
-      // <>
-      //   <h1>{label}</h1>
-      //   <div>
-      //     {options.map((op) => {
-      //       return (
-      //         <>
-      //           <label>
-      //             <input
-      //               type="checkbox"
-      //               onChange={(e) => {
-      //                 let indexOfOp = responses.indexOf(op);
-      //                 if (e.target.checked === true) {
-      //                   setresponses([...responses, op]);
-      //                 } else {
-      //                   let updatedResponse = responses.splice(indexOfOp, 1);
-      //                   setresponses([...responses], updatedResponse);
-      //                 }
-      //               }}
-      //             />
-      //             {op}
-      //           </label>
-      //         </>
-      //       );
-      //     })}
-      //   </div>
-      // </>
       <>
         <div className="resizePreviewCard2">
           <div className="card  p-0 mt-0 mb-1 mx-0">
@@ -139,21 +100,6 @@ function PreviewQuestion({ type, options, label, setPreviewState, id }) {
                     {options.map((op) => {
                       return (
                         <>
-                          {/* <label>
-                            <input
-                              type="checkbox"
-                              onChange={(e) => {
-                                let indexOfOp = responses.indexOf(op);
-                                if (e.target.checked === true) {
-                                  setresponses([...responses, op]);
-                                } else {
-                                  let updatedResponse = responses.splice(indexOfOp, 1);
-                                  setresponses([...responses], updatedResponse);
-                                }
-                              }}
-                            />
-                            {op}
-                          </label> */}
                           <div className="form-check">
                             <input className="form-check-input" type="checkbox" value={op} id="flexCheckDefault" onChange={(e) => {
                               let indexOfOp = responses.indexOf(op);
@@ -203,15 +149,6 @@ function PreviewQuestion({ type, options, label, setPreviewState, id }) {
   if (type === "date") {
     return (
       <>
-        {/* <h1>{label}</h1>
-        <div>
-          <input
-            type="date"
-            onChange={(e) => {
-              setresponses(e.target.value);
-            }}
-          ></input>
-        </div> */}
         <div className="resizePreviewCard2">
           <div className="card  p-0 mt-0 mb-1 mx-0">
             <div className="card-body">

@@ -132,7 +132,7 @@ function BlankForm({
         >
           <MdOutlineRemoveRedEye /> Preview
         </button>
-        <button type="button" class="btn btn-secondary" id="previewbutton">
+        <button type="button" class="btn btn-secondary" id="previewbutton" onClick={onSaveClick}>
           <BiSave /> Save Form
         </button>
         <button onClick={viewResponse} id="previewbutton" className='btn btn-secondary'>

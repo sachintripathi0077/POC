@@ -15,11 +15,12 @@ function PreviewScreen({ questionList }) {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-  const setPreviewState = (qState, id) => {
+  const setPreviewState = (qState, id, label) => {
     let newState = state.filter((question) => question.qid != id);
     let qStateObj = {
       response: qState,
       qid: id,
+      label: label
     };
     newState.push(qStateObj);
     setstate(newState);
@@ -64,17 +65,15 @@ function PreviewScreen({ questionList }) {
                     />
 
                   );
-                })} 
+                })}
               </div></div></div>
           <div id='previewBackPosition'>
 
             <button type='button' className="btn btn-secondary" id='previewback' onClick={handleBack} >
-              {/* <Link to="/successResponse">SUBMIT</Link> */}
               Back
             </button>
           </div>
           <button type="submit" className="btn btn-primary" id='previewsubmit' >
-            {/* <Link to="/successResponse">SUBMIT</Link> */}
             SUBMIT
           </button>
 

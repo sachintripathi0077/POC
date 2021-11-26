@@ -14,11 +14,10 @@ class FormHeader extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props.headerContentObj,'headerContent ')
     const {headerContentObj}= this.props
     if(headerContentObj){
       this.setState({
-        profileImg: headerContentObj.profileImg,
+        profileImg: headerContentObj.profileImg || '',
         title: headerContentObj.title,
         desc: headerContentObj.desc,
       })
@@ -39,7 +38,6 @@ class FormHeader extends Component {
 
   handleDesc = (e) => {
     this.setState({ desc: e.target.value }, () => (this.props.headerContent(this.state)));
-    console.log(this.state.desc);
     this.props.headerContent(this.state);
   }
 
