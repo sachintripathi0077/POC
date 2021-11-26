@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-
-
 function PreviewQuestion({ type, options, label, setPreviewState, id }) {
   const [responses, setresponses] = useState([]);
 

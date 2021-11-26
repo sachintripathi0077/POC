@@ -20,10 +20,8 @@ function CreateChoice({ postQuestionsList, postHeaderContent }) {
   useEffect(async () => {
     try {
       const response = await axios.get("http://localhost:3080/savedForms");
-      console.log(response.data);
       if (response.data && response.data.length > 0) {
         const savedDetails = response.data[response.data.length - 1];
-        console.log(savedDetails, "saveddetails");
         setSavedForm(savedDetails);
       }
     } catch (e) {

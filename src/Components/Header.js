@@ -1,8 +1,6 @@
 import React from "react";
 import "../App.css";
-import { IoIosAddCircleOutline } from "react-icons";
 import { VscAdd } from "react-icons/vsc";
-import { CgAddR } from "react-icons";
 import { Link } from "react-router-dom";
 
 function Header() {

@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ToCSV from "./ToCSV";
 
@@ -12,7 +11,6 @@ function Responses() {
     axios
       .get("http://localhost:3080/responses")
       .then(function (response) {
-        // console.log(response);
         setResponse(response.data);
       })
       .catch(function (error) {
@@ -27,13 +25,8 @@ function Responses() {
     responses[0].map((q) => {
       return q.label;
     });
-  console.log(questionArray);
-  console.log(responses);
 
-
-  console.log("Responses", responses);
-  const responseArray = [];
-  var eachRow = [];
+    const responseArray = [];
   const displayData =
     responses &&
     responses.map((eachFormResponse) => {
@@ -41,15 +34,11 @@ function Responses() {
         const tempArr=[];
         for (let i = 0; i < questionArray.length; i++){
             let obj=eachFormResponse.find((response)=> response.label===questionArray[i])
-            console.log(obj,'obj')
            tempArr.push(obj && obj.response)
         }
-        console.log(eachFormResponse,'eachFormResponse', tempArr)
 
     responseArray.push(tempArr);
     });
-
-  console.log("Response Array: ", responseArray);
 
   const handleBack = () => {
     navigate(`/createBlank`);

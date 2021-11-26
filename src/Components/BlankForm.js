@@ -41,10 +41,6 @@ function BlankForm({
     window.scrollTo(0, document.body.scrollHeight);
   };
 
-  useEffect(() => {
-    console.log(questionList, "questionList");
-  }, [questionList]);
-
   const deleteQuestion = (i) => {
     const list = [...questionList];
     list.splice(i, 1);
@@ -81,7 +77,6 @@ function BlankForm({
         "http://localhost:3080/savedForms",
         form
       );
-      console.log(response, form, "saved");
     } catch (e) {
       console.log("error ", e);
     }

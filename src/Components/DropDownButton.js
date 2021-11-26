@@ -1,7 +1,6 @@
 import React from "react";
 
 function DropDownButton(props) {
-  // console.log(props.list)
   return (
     <div>
       <button type="button" className="btn btn-outline-secondary" id="mybtn">

@@ -23,10 +23,6 @@ function QuestionCard({
     updatedData(options, label, questionType, index);
   }, [options, label, questionType]);
 
-  useEffect(() => {
-    console.log(questionType, "questionType");
-  }, [questionType]);
-
   const addOption = () => {
     const optionsList = [...options];
     optionsList.push(`Option ${options.length + 1}`);
@@ -73,19 +69,6 @@ function QuestionCard({
             </div>
           </div>
         </div>
-
-        {/* <select
-          onChange={(e) => {
-            setQuestionType(e.target.value);
-          }}
-          value={question.type}
-        >
-          <option value="text">Single Line</option>{" "}
-          <option value="radio">Radio Fields</option>{" "}
-          <option value="checkbox">CheckBox</option>
-          <option value="date">Date</option>
-        </select> */}
-        {/* <br /> */}
 
         <div class="card mt-3 mb-1 mx-4" id="flex-child2">
           <div class="card-body">
