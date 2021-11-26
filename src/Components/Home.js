@@ -16,10 +16,10 @@ function Home() {
     <div>
       <br />
       <div>
-        <div class="column">
+        <div className="column">
           <img src={mainslide} alt="mainslide" width="100%"></img>
         </div>
-        <div class="column2">
+        <div className="column2">
           <h1>
             Get Started with <b>Super Survey</b>
           </h1>
@@ -27,7 +27,7 @@ function Home() {
           <Link to="/createChoice">
             <button
               type="button"
-              class="btn btn-primary btn-lg"
+              className="btn btn-primary btn-lg"
               id="buttonlocation"
               style={{ float: "inherit" }}
             >
@@ -39,7 +39,7 @@ function Home() {
 
         </div>
       </div>
-      <marquee class="marque">
+      <marquee className="marque">
         <p>
           <b>Get feedback effortlessly with surveys, polls, and quizzes.</b>
         </p>

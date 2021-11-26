@@ -115,7 +115,7 @@ function BlankForm({
          <div className="mynav">
         <button
           type="button"
-          class="btn btn-primary"
+          className="btn btn-primary"
           // id="formtextbutton"
           id='previewbutton2'
           onClick={addQuestion}
@@ -126,13 +126,13 @@ function BlankForm({
        
         <button
           type="button"
-          class="btn btn-secondary"
+          className="btn btn-secondary"
           id="previewbutton"
           onClick={onPreviewClick}
         >
           <MdOutlineRemoveRedEye /> Preview
         </button>
-        <button type="button" class="btn btn-secondary" id="previewbutton" onClick={onSaveClick}>
+        <button type="button" className="btn btn-secondary" id="previewbutton" onClick={onSaveClick}>
           <BiSave /> Save Form
         </button>
         <button onClick={viewResponse} id="previewbutton" className='btn btn-secondary'>

@@ -21,7 +21,7 @@ function Header() {
             <Link to="/createChoice">
               <button
                 type="button"
-                class="btn btn-primary btn-lg"
+                className="btn btn-primary btn-lg"
                 id="buttonlocation"
                 style={{ float: 'inherit' }}
               >

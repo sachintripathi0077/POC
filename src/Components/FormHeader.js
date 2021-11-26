@@ -68,7 +68,7 @@ class FormHeader extends Component {
           </div>
         </div>
         <div className="titleContainer">
-          <div class="input-group input-group-lg">
+          <div className="input-group input-group-lg">
             <input
               type="text"
               className="form-control"
@@ -79,8 +79,8 @@ class FormHeader extends Component {
               value={this.state.title}
             ></input>
           </div>
-          <div class="input-group input-group-sm">
-            <input type="text" class="form-control"
+          <div className="input-group input-group-sm">
+            <input type="text" className="form-control"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-sm"
               placeholder="Description"

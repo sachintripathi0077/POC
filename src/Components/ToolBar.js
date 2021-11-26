@@ -55,7 +55,7 @@ function ToolBar() {
                 <option value="Multiple">Multiple select</option>'
               </>
             }/>
-            <button type="button" class="btn btn-outline-secondary" id="mybtn">Add Tile
+            <button type="button" className="btn btn-outline-secondary" id="mybtn">Add Tile
     </button>
           {/* </td>
         </tr>
